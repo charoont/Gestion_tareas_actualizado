@@ -1,0 +1,33 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9999:9999"
+    volumes:
+      - ./:/app:rw
+    depends_on:
+      - db
+    networks:
+      - tareas
+
+  db:
+    image: postgres:16.4-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=my_password
+      - POSTGRES_DB=hello_django_dev
+    volumes:
+      - postgres_data:/var/lib/postgresql/data:rw
+    ports:
+      - "5432:5432"
+    networks:
+      - tareas 
+
+
+networks:
+  tareas:
+
+volumes:
+  postgres_data:

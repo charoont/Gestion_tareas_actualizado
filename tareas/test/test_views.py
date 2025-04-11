@@ -29,7 +29,8 @@ class TareasAPITestCase(APITestCase):
             'estado': 'TO DO',
             'prioridad': 'MEDIO',
             'fecha_entrega': '2024-07-30',
-            'usuario_asignado': self.user.id
+            'usuario_asignado': self.user.id  # <- ESTE CAMPO ES EL CLAVE
         }
         response = self.client.post(self.url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+

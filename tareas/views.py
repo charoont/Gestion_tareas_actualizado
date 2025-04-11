@@ -9,3 +9,7 @@ class TareaViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['estado', 'fecha_entrega', 'usuario_asignado']
     search_fields = ['nombre']
+
+    def perform_create(self, serializer):
+        serializer.save(usuario_asignado=self.request.user)
+

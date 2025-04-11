@@ -36,4 +36,4 @@ class Tareas(models.Model):
     
     class Meta:
         verbose_name_plural = "Tareas"
-        ordering = ['fecha_entrega']  # Orden por defecto para optimizar consultas
+        ordering = ['fecha_entrega'] 

@@ -27,7 +27,7 @@ class Tareas(models.Model):
         User, 
         on_delete=models.PROTECT,
         related_name='tareas_asignadas',
-        db_index=True
+        null=True
     )
     created_at = models.DateTimeField(auto_now_add=True) 
 

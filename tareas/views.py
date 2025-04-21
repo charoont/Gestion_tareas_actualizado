@@ -11,5 +11,10 @@ class TareaViewSet(viewsets.ModelViewSet):
     search_fields = ['nombre']
 
     def perform_create(self, serializer):
-        serializer.save(usuario_asignado=self.request.user)
+        # Solo asignar el usuario autenticado si está logueado
+        if self.request.user.is_authenticated:
+            serializer.save(usuario_asignado=self.request.user)
+        else:
+            serializer.save()
+
 
